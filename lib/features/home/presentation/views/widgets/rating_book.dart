@@ -7,27 +7,27 @@ class RatingBook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.only(right: 8.0),
       child: Row(
         children: [
-          Icon(
+          const Icon(
             FontAwesomeIcons.solidStar,
             color: Colors.amber,
           ),
-          SizedBox(
+          const SizedBox(
             width: 6.3,
           ),
-          Text(
+          const Text(
             '4.8',
             style: Styles.textStyle16,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           Text(
             '(258)',
-            style: Styles.textStyle14,
+            style: Styles.textStyle14.copyWith(color: const Color(0xff707070)),
           ),
         ],
       ),

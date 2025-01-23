@@ -41,6 +41,7 @@ class BestSellerListViewItem extends StatelessWidget {
                 child: Text(
                   'Hurry Poter\nand the Goblet of Fire',
                   style: Styles.textStyle20
+                      .copyWith(fontWeight: FontWeight.bold)
                       .copyWith(fontFamily: kGTSectraFineRegular),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
