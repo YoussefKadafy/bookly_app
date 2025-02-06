@@ -15,7 +15,10 @@ class SimilarBookListView extends StatelessWidget {
             itemBuilder: (contexr, index) {
               return const Padding(
                 padding: EdgeInsets.only(right: 8.0),
-                child: CustomImageItem(),
+                child: CustomImageItem(
+                  imgUrl:
+                      'https://images.squarespace-cdn.com/content/v1/60f1a490a90ed8713c41c36c/1629223610791-LCBJG5451DRKX4WOB4SP/37-design-powers-url-structure.jpeg',
+                ),
               );
             }),
       ),

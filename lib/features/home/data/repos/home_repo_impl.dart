@@ -31,12 +31,12 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-      var data = await apiService.get(
-          endPoint: 'q=subject:advanced flutter&filter=free-ebooks');
+      var data = await apiService.get(endPoint: 'q=cyber security');
       List<BookModel> bookList = [];
-      for (var element in data['items']) {
-        bookList.add(BookModel.fromJson(element));
-      }
+      if (data.isNotEmpty && data.containsKey('items'))
+        for (var element in data['items']) {
+          bookList.add(BookModel.fromJson(element));
+        }
       return Right(bookList);
     } on Exception catch (e) {
       if (e is DioException) {
