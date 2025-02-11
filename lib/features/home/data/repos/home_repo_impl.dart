@@ -11,7 +11,7 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
-      var data = await apiService.get(endPoint: 'q=cyber security');
+      var data = await apiService.get(endPoint: 'q=bug bounty');
 
       List<BookModel> booksList = [];
       if (data.isNotEmpty && data.containsKey('items'))
@@ -42,6 +42,26 @@ class HomeRepoImpl implements HomeRepo {
         return Left(ServiceFailure.fromDioError(e));
       }
       return Left(ServiceFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimiliarBooks() async {
+    try {
+      var data = await apiService.get(endPoint: 'q=cyber security');
+
+      List<BookModel> books = [];
+      if (data.isNotEmpty && data.containsKey('items'))
+        for (var element in data['items']) {
+          books.add(BookModel.fromJson(element));
+        }
+      return Right(books);
+    } on Exception catch (e) {
+      if (e is DioException) {
+        return Left(ServiceFailure(e.toString()));
+      } else {
+        return Left(ServiceFailure(e.toString()));
+      }
     }
   }
 }
