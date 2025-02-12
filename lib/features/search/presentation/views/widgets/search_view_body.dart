@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchViewBody extends StatelessWidget {
-  const SearchViewBody({super.key});
+  const SearchViewBody({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +27,18 @@ class SearchViewBody extends StatelessWidget {
                       .fetchSearchResult(subject: data);
                 },
               ),
-              const SizedBox(height: 30),
+              const SizedBox(
+                height: 30,
+              ),
               const Text(
                 'Search Result',
                 style: Styles.textStyle18,
               ),
-              const SizedBox(height: 15),
+              const SizedBox(
+                height: 15,
+              ),
               Expanded(
-                child: _buildContent(state),
+                child: buildSearchContent(state),
               ),
             ],
           );
@@ -41,7 +47,7 @@ class SearchViewBody extends StatelessWidget {
     );
   }
 
-  Widget _buildContent(SearchState state) {
+  Widget buildSearchContent(SearchState state) {
     if (state is SearchSuccess) {
       return SearchResultListView(bookModel: state.books);
     } else if (state is SearchFailure) {
@@ -49,7 +55,6 @@ class SearchViewBody extends StatelessWidget {
     } else if (state is SearchLoading) {
       return const CustomLoadingIndicator();
     } else {
-      // Initial state, show empty or prompt message
       return const Center(
         child: Text('Enter a search term to find books'),
       );
